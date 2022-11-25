@@ -1,0 +1,33 @@
+.character {
+  display: flex;
+
+  width: 500px;
+  height: 220px;
+  background: rgb(60, 62, 68);
+  color: #fff;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  &__card-info {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+  &__name {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  &__info-container {
+    display: flex;
+    flex-direction: column;
+  }
+  &__title-info {
+    margin-top: 5px;
+    color: rgb(158, 158, 158);
+    font-size: 16px;
+  }
+  &__info {
+    color: rgb(245, 245, 245);
+    font-size: 18px;
+  }
+}
