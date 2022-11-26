@@ -1,4 +1,4 @@
-import { fetchCharacters } from "../../../gateway/gateway";
+import { fetchData } from "../../../gateway/gateway";
 
 export const CHARACTERS_DATA = "CHARACTERS_DATA";
 
@@ -13,7 +13,7 @@ export const charactersData = (data) => {
 
 export const getCharactersData = (url) => {
   return function (dispatch) {
-    fetchCharacters(url).then((charData) => {
+    fetchData(url).then((charData) => {
       dispatch(charactersData(charData));
     });
   };

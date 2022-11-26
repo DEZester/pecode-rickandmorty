@@ -1,12 +1,11 @@
 .character {
   display: flex;
-
   width: 500px;
   height: 220px;
   background: rgb(60, 62, 68);
   color: #fff;
-
   border-radius: 0.5rem;
+  cursor: pointer;
   &__card-info {
     display: flex;
     flex-direction: column;

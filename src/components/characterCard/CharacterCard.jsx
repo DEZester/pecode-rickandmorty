@@ -1,43 +1,68 @@
-const CharacterCard = () => {
-  return (
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { connect } from "react-redux";
+import * as characterActions from "./features/character.actions";
+import { characterSelector } from "./features/character.selectors";
+
+const CharacterCard = ({ getCharacterData, character }) => {
+  const param = useParams();
+  useEffect(() => {
+    getCharacterData(`https://rickandmortyapi.com/api/character/${param.id}`);
+  }, []);
+
+  return character === null ? (
+    <div>No Data</div>
+  ) : (
     <div className="characterCard">
       <img
-        src="https://rickandmortyapi.com/api/character/avatar/1.jpeg"
+        src={character.image}
         alt="char-img"
         className="characterCard__img"
       />
-      <h1 className="characterCard__name">Name</h1>
+      <h1 className="characterCard__name">{character.name}</h1>
 
       <div className="characterCard__info-block">
         <span className="characterCard__title-info">status</span>
-        <span className="characterCard__info">Rick</span>
+        <span className="characterCard__info">{character.status}</span>
       </div>
       <div className="characterCard__info-block">
         <span className="characterCard__title-info">species</span>
-        <span className="characterCard__info">Rick</span>
+        <span className="characterCard__info">{character.species}</span>
       </div>
       <div className="characterCard__info-block">
         <span className="characterCard__title-info">gender</span>
-        <span className="characterCard__info">Rick</span>
+        <span className="characterCard__info">{character.gender}</span>
       </div>
       <div className="characterCard__info-block">
         <span className="characterCard__title-info">type</span>
-        <span className="characterCard__info">Rick</span>
+        <span className="characterCard__info">
+          {character.type ? character.type : "unknown"}
+        </span>
       </div>
       <div className="characterCard__info-block">
         <span className="characterCard__title-info">origin</span>
-        <span className="characterCard__info">Rick</span>
+        <span className="characterCard__info">{character.origin.name}</span>
       </div>
       <div className="characterCard__info-block">
         <span className="characterCard__title-info">location</span>
-        <span className="characterCard__info">Rick</span>
+        <span className="characterCard__info">{character.location.name}</span>
       </div>
       <div className="characterCard__info-block">
         <span className="characterCard__title-info">episodes</span>
-        <span className="characterCard__info">Rick</span>
+        <span className="characterCard__info">{character.episode.length}</span>
       </div>
     </div>
   );
 };
 
-export default CharacterCard;
+const mapState = (state) => {
+  return {
+    character: characterSelector(state),
+  };
+};
+
+const mapDispatch = {
+  getCharacterData: characterActions.getCharacterData,
+};
+
+export default connect(mapState, mapDispatch)(CharacterCard);

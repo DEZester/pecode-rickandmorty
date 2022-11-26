@@ -8,19 +8,25 @@ import {
 import CharactersListItem from "./сharactersListItem/CharactersListItem";
 import * as charactersActions from "./features/characters.actions";
 import Pagination from "../pagination/Pagination";
+import { useNavigate } from "react-router-dom";
 
 const CharactersList = ({ characters, getCharactersList, next, prev }) => {
   const [api, setApi] = useState("https://rickandmortyapi.com/api/character");
   useEffect(() => {
     getCharactersList(api);
   }, [api]);
+  const navigate = useNavigate();
 
   return (
     <div className="characters">
       <div className="characters__list">
         <div className="characters__list-items">
           {characters.map((character) => (
-            <div key={character.id}>
+            <div
+              className={`characters__list-item_${character.id}`}
+              key={character.id}
+              onClick={() => navigate(`/${character.id}`)}
+            >
               <CharactersListItem
                 img={character.image}
                 name={character.name}
