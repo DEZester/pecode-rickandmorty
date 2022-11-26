@@ -1,0 +1,25 @@
+.characterCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin: 20px;
+  width: 500px;
+  height: 700px;
+  border: 2px solid whitesmoke;
+  border-radius: 20px;
+  color: aliceblue;
+  &__img {
+    margin-top: 10px;
+  }
+  &__info-block {
+    display: flex;
+    gap: 10px;
+  }
+  &__title-info {
+    color: #666666;
+  }
+  &__info {
+    font-weight: bold;
+  }
+}
