@@ -3,6 +3,7 @@
 @import "./components/charactersList/сharactersListItem/characterListItem.scss";
 @import "./components/pagination/pagination.scss";
 @import "./components/characterCard/characterCard.scss";
+@import "./components/notFound/notFound.scss";
 body {
   margin: 0;
   padding: 0;
@@ -16,4 +17,16 @@ body {
   min-height: 100vh;
   max-height: 100%;
   background: #202329;
+}
+.btn {
+  width: 130px;
+  height: 50px;
+  border: 1px solid #00b5cc;
+  background: transparent;
+  color: #00b5cc;
+  cursor: pointer;
+  &:disabled {
+    border: 1px solid grey;
+    color: grey;
+  }
 }

@@ -1,14 +1,19 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import * as characterActions from "./features/character.actions";
 import { characterSelector } from "./features/character.selectors";
 
 const CharacterCard = ({ getCharacterData, character }) => {
   const param = useParams();
+  const navigate = useNavigate();
   useEffect(() => {
     getCharacterData(`https://rickandmortyapi.com/api/character/${param.id}`);
   }, []);
+
+  if (character !== null && character.hasOwnProperty("error")) {
+    navigate("/sdfsda/sadfsdf");
+  }
 
   return character === null ? (
     <div>No Data</div>
@@ -19,7 +24,7 @@ const CharacterCard = ({ getCharacterData, character }) => {
         alt="char-img"
         className="characterCard__img"
       />
-      <h1 className="characterCard__name">{character.name}</h1>
+      <h1 className="characterCard__name">{character.name || "name"}</h1>
 
       <div className="characterCard__info-block">
         <span className="characterCard__title-info">status</span>

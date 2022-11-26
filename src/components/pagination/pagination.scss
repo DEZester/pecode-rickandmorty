@@ -2,16 +2,4 @@
   display: flex;
   gap: 50px;
   margin-bottom: 50px;
-  &__btn {
-    width: 130px;
-    height: 50px;
-    border: 1px solid #00b5cc;
-    background: transparent;
-    color: #00b5cc;
-    cursor: pointer;
-    &:disabled {
-      border: 1px solid grey;
-      color: grey;
-    }
-  }
 }
