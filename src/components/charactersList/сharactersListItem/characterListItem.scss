@@ -22,7 +22,25 @@
     font-size: 1.5rem;
     font-weight: bold;
   }
+  &__status-color {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: blue;
+    &_Alive {
+      background: greenyellow;
+    }
+    &_Dead {
+      background: red;
+    }
+    &_unknown {
+      background: grey;
+    }
+  }
   &__status {
+    display: flex;
+    align-items: center;
+    gap: 5px;
     margin-top: 5px;
     font-weight: bold;
     font-size: 18px;

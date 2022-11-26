@@ -9,5 +9,9 @@
     background: transparent;
     color: #00b5cc;
     cursor: pointer;
+    &:disabled {
+      border: 1px solid grey;
+      color: grey;
+    }
   }
 }

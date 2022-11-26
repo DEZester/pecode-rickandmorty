@@ -1,10 +1,18 @@
 const Pagination = ({ next, prev, setApi }) => {
   return (
     <div className="pagination">
-      <button className="pagination__btn" onClick={() => setApi(prev)}>
+      <button
+        className="pagination__btn"
+        onClick={() => setApi(prev)}
+        disabled={!prev}
+      >
         Prev Page
       </button>
-      <button className="pagination__btn" onClick={() => setApi(next)}>
+      <button
+        className="pagination__btn"
+        onClick={() => setApi(next)}
+        disabled={!next}
+      >
         Next Page
       </button>
     </div>

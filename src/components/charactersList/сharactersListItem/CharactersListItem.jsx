@@ -12,7 +12,9 @@ const CharactersListItem = ({
       <div className="character__card-info">
         <h2 className="character__name">{name}</h2>
         <div className="character__status">
-          <div className="character__status-color"></div>
+          <div
+            className={`character__status-color character__status-color_${status}`}
+          ></div>
           <span className="character__isAlive">{status}</span>
         </div>
         <div className="character__info-container">
