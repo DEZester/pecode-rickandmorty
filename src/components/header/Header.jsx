@@ -1,25 +1,27 @@
 import headerLogo from "../../images/header-logo.png";
-
+import { NavLink } from "react-router-dom";
 const Header = () => {
+  const activeLink = ({ isActive }) =>
+    isActive ? `navlist__link navlist__link-active` : `navlist__link`;
   return (
     <div className="header">
       <img src={headerLogo} alt="header-logo" className="header__logo" />
       <nav className="navbar">
         <ul className="navlist">
           <li className="navlist__item">
-            <a href="#" className="navlist__link">
+            <NavLink to="/" className={activeLink}>
               Characters
-            </a>
+            </NavLink>
           </li>
           <li className="navlist__item">
-            <a href="#" className="navlist__link">
+            <NavLink to={"/episodes"} className={activeLink}>
               Episodes
-            </a>
+            </NavLink>
           </li>
           <li className="navlist__item">
-            <a href="#" className="navlist__link">
+            <NavLink to={"/locations"} className={activeLink}>
               Locations
-            </a>
+            </NavLink>
           </li>
           <li className="navlist__item">
             <a href="#" className="navlist__link">

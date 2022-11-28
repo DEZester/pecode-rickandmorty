@@ -4,6 +4,7 @@
 @import "./components/pagination/pagination.scss";
 @import "./components/characterCard/characterCard.scss";
 @import "./components/notFound/notFound.scss";
+@import "./components/episodes/episodesList.scss";
 body {
   margin: 0;
   padding: 0;
@@ -17,6 +18,7 @@ body {
   min-height: 100vh;
   max-height: 100%;
   background: #202329;
+  color: white;
 }
 .btn {
   width: 130px;
@@ -24,7 +26,13 @@ body {
   border: 1px solid #00b5cc;
   background: transparent;
   color: #00b5cc;
+  font-weight: bold;
   cursor: pointer;
+  transition: all 0.5s;
+  &:hover {
+    background: #00b5cc;
+    color: #202329;
+  }
   &:disabled {
     border: 1px solid grey;
     color: grey;

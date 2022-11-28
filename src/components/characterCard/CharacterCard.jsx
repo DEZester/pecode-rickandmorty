@@ -8,12 +8,11 @@ const CharacterCard = ({ getCharacterData, character }) => {
   const param = useParams();
   const navigate = useNavigate();
   useEffect(() => {
+    if (param.id > 826 || isNaN(+param.id)) {
+      navigate("*");
+    }
     getCharacterData(`https://rickandmortyapi.com/api/character/${param.id}`);
   }, []);
-
-  if (character !== null && character.hasOwnProperty("error")) {
-    navigate("/sdfsda/sadfsdf");
-  }
 
   return character === null ? (
     <div>No Data</div>
@@ -46,7 +45,9 @@ const CharacterCard = ({ getCharacterData, character }) => {
       </div>
       <div className="characterCard__info-block">
         <span className="characterCard__title-info">origin</span>
-        <span className="characterCard__info">{character.origin.name}</span>
+        <span className="characterCard__info">
+          {character.origin.name || "name"}
+        </span>
       </div>
       <div className="characterCard__info-block">
         <span className="characterCard__title-info">location</span>

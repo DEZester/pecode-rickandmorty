@@ -2,10 +2,12 @@ import charactersReducer from "./components/charactersList/features/characters.r
 import { combineReducers, createStore, compose, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import characterReducer from "./components/characterCard/features/character.reducer";
+import episodesReducer from "./components/episodes/features/episodes.reducer";
 
 const reducer = combineReducers({
   characters: charactersReducer,
   character: characterReducer,
+  episodes: episodesReducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

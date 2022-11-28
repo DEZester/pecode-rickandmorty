@@ -19,9 +19,16 @@
   list-style-type: none;
   letter-spacing: 0.5px;
   &__link {
+    margin-bottom: 1px;
     text-decoration: none;
     color: #00b5cc;
     text-shadow: #a4d22a 5px 0 5px;
     -webkit-text-stroke: 0.07em rgba(0, 0, 0, 0.5);
+    &-active {
+      background: #a4d22a;
+      backdrop-filter: blur(40px);
+      border-radius: 50%;
+      box-shadow: -5px -5px 30px 5px #a4d22a, 5px 5px 30px 5px #a4d22a;
+    }
   }
 }
