@@ -5,6 +5,10 @@
 @import "./components/characterCard/characterCard.scss";
 @import "./components/notFound/notFound.scss";
 @import "./components/episodes/episodesList.scss";
+@import "./components/locations/locationsList.scss";
+@import "./components/searchField/searchField.scss";
+@import "./stylesheets/mixins.scss";
+
 body {
   margin: 0;
   padding: 0;
@@ -36,5 +40,15 @@ body {
   &:disabled {
     border: 1px solid grey;
     color: grey;
+  }
+}
+.table {
+  margin: 10px;
+  border-spacing: 0px;
+  border-collapse: collapse;
+
+  &__info-item {
+    padding: 20px;
+    border: 1px solid white;
   }
 }

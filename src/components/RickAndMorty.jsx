@@ -4,7 +4,7 @@ import CharacterCard from "./characterCard/CharacterCard";
 import { Route, Routes } from "react-router-dom";
 import NotFound from "./notFound/NotFound";
 import EpisodesList from "./episodes/EpisodesList";
-import Locations from "./locations/Locations";
+import LocationsList from "./locations/LocationsList";
 
 const RickAndMorty = () => {
   return (
@@ -14,7 +14,7 @@ const RickAndMorty = () => {
         <Route path="/" element={<CharactersList />} />
         <Route path="/character/:id" element={<CharacterCard />} />
         <Route path="/episodes" element={<EpisodesList />} />
-        <Route path="/locations" element={<Locations />} />
+        <Route path="/locations" element={<LocationsList />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

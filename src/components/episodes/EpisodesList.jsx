@@ -1,31 +1,47 @@
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import * as episodesActions from "./features/episodes.actions";
-import {
-  episodesSelector,
-  nextPageEpisodesSelector,
-  prevPageEpisdoesSelector,
-} from "./features/episodes.selectors";
+import * as episodesSelector from "./features/episodes.selectors";
 import EpisodesListItem from "./episodesListItem/EpisodesListItem";
 import Pagination from "../pagination/Pagination";
+import SearchField from "../searchField/SearchField";
+import { useNavigate } from "react-router-dom";
 
 const EpisodesList = ({ getEpisodesData, episodes, next, prev }) => {
-  const [episodesApi, setEpisodesApi] = useState(
-    "https://rickandmortyapi.com/api/episode"
-  );
+  const [searchValue, setSearchValue] = useState("");
+
+  let api = `https://rickandmortyapi.com/api/episode/?name=${searchValue}`;
+
   useEffect(() => {
-    getEpisodesData(episodesApi);
-  }, [episodesApi]);
+    getEpisodesData(api);
+  }, []);
+
+  const changeHandler = (event) => {
+    setSearchValue(event.target.value);
+    if (searchValue.length < 1) {
+      getEpisodesData("https://rickandmortyapi.com/api/episode");
+    }
+  };
+
+  const searchHandler = () => {
+    getEpisodesData(api);
+  };
 
   return (
     <div className="episodes">
-      <table className="episodes__table">
+      <SearchField
+        placeholderText="episode"
+        searchValue={searchValue}
+        searchHandler={searchHandler}
+        changeHandler={changeHandler}
+      />
+      <table className="table">
         <thead>
-          <tr className="episodes__info">
-            <th className="episodes__info-item">№</th>
-            <th className="episodes__info-item">Name</th>
-            <th className="episodes__info-item">Air Date</th>
-            <th className="episodes__info-item">Created</th>
+          <tr className="table__info">
+            <th className="table__info-item">№</th>
+            <th className="table__info-item">Name</th>
+            <th className="table__info-item">Air Date</th>
+            <th className="table__info-item">Created</th>
           </tr>
         </thead>
         <tbody>
@@ -40,16 +56,16 @@ const EpisodesList = ({ getEpisodesData, episodes, next, prev }) => {
           ))}
         </tbody>
       </table>
-      <Pagination next={next} prev={prev} setApi={setEpisodesApi} />
+      <Pagination next={next} prev={prev} setApi={getEpisodesData} />
     </div>
   );
 };
 
 const mapState = (state) => {
   return {
-    episodes: episodesSelector(state),
-    next: nextPageEpisodesSelector(state),
-    prev: prevPageEpisdoesSelector(state),
+    episodes: episodesSelector.episodesListSelector(state),
+    next: episodesSelector.nextPageEpisodesSelector(state),
+    prev: episodesSelector.prevPageEpisdoesSelector(state),
   };
 };
 
