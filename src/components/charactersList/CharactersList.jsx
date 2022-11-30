@@ -1,23 +1,31 @@
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import {
-  charactersSelector,
-  nextPageSelector,
-  prevPageSelector,
-} from "./features/characters.selectors";
+import * as charactersSelector from "./features/characters.selectors";
 import CharactersListItem from "./сharactersListItem/CharactersListItem";
 import * as charactersActions from "./features/characters.actions";
 import Pagination from "../pagination/Pagination";
 import { useNavigate } from "react-router-dom";
+import FilterLayout from "../filterLayout/FilterLayout";
+import {
+  charactersStatuses,
+  charactersSpecieses,
+  charactersGenders,
+} from "./features/data";
+import Filter from "../filter/Filter";
 
 const CharactersList = ({ characters, getCharactersList, next, prev }) => {
-  const navigate = useNavigate();
+  const [statusValue, setStatusValue] = useState("");
+  const [speciesValue, setSpeciesValue] = useState("");
+  const [genderValue, setGenderValue] = useState("");
 
-  const api = `https://rickandmortyapi.com/api/character/`;
+  const baseUrl = `https://rickandmortyapi.com/api/character/`;
+  let api = `${baseUrl}?status=${statusValue}&species=${speciesValue}&gender=${genderValue}`;
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     getCharactersList(api);
-  }, []);
+  }, [api]);
 
   return (
     <div className="characters">
@@ -42,22 +50,32 @@ const CharactersList = ({ characters, getCharactersList, next, prev }) => {
         </div>
         <Pagination setApi={getCharactersList} next={next} prev={prev} />
       </div>
-      <div className="characters__sort">
-        <select id="test" className="characters__sort-select">
-          <option>Species</option>
-          <option>Status</option>
-          <option>gender</option>
-        </select>
-      </div>
+      <FilterLayout clearFilters={getCharactersList} baseUrl={baseUrl}>
+        <Filter
+          data={charactersStatuses}
+          filterName={"Status"}
+          changeHandler={setStatusValue}
+        />
+        <Filter
+          data={charactersSpecieses}
+          filterName={"Species"}
+          changeHandler={setSpeciesValue}
+        />
+        <Filter
+          data={charactersGenders}
+          filterName={"Gender"}
+          changeHandler={setGenderValue}
+        />
+      </FilterLayout>
     </div>
   );
 };
 
 const mapState = (state) => {
   return {
-    characters: charactersSelector(state),
-    next: nextPageSelector(state),
-    prev: prevPageSelector(state),
+    characters: charactersSelector.charactersSelector(state),
+    next: charactersSelector.nextPageSelector(state),
+    prev: charactersSelector.prevPageSelector(state),
   };
 };
 
