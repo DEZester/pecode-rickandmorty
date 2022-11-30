@@ -19,26 +19,21 @@ const Locations = ({ getLocationsData, locations, next, prev }) => {
   const [typeValue, setTypeValue] = useState("");
   const [dimensionValue, setDimensionValue] = useState("");
   const baseUrl = "https://rickandmortyapi.com/api/location";
-  const api = `${baseUrl}?name=${searchValue}&type=${typeValue}&dimension=${dimensionValue}`;
+  const api = `${baseUrl}?type=${typeValue}&dimension=${dimensionValue}`;
 
   useEffect(() => {
     getLocationsData(api);
   }, [api]);
-
-  const changeHandler = (event) => {
-    setSearchValue(event.target.value);
-    if (!searchValue) {
-      getLocationsData(baseUrl);
-    }
-  };
 
   return (
     <div className="locations">
       <div className="locations__list">
         <SearchField
           placeholderText="location"
+          setSearchValue={setSearchValue}
           searchValue={searchValue}
-          changeHandler={changeHandler}
+          getData={getLocationsData}
+          url={`${api}&`}
         />
         <table className="table">
           <thead>

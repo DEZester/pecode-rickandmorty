@@ -9,25 +9,21 @@ import SearchField from "../searchField/SearchField";
 const EpisodesList = ({ getEpisodesData, episodes, next, prev }) => {
   const [searchValue, setSearchValue] = useState("");
 
-  let api = `https://rickandmortyapi.com/api/episode/?name=${searchValue}`;
+  let api = `https://rickandmortyapi.com/api/episode/`;
 
   useEffect(() => {
     getEpisodesData(api);
   }, [api]);
-
-  const changeHandler = (event) => {
-    setSearchValue(event.target.value);
-    if (searchValue.length < 1) {
-      getEpisodesData("https://rickandmortyapi.com/api/episode");
-    }
-  };
 
   return (
     <div className="episodes">
       <SearchField
         placeholderText="episode"
         searchValue={searchValue}
-        changeHandler={changeHandler}
+        setSearchValue={setSearchValue}
+        getData={getEpisodesData}
+        api={api}
+        url={`${api}?`}
       />
       <table className="table">
         <thead>
