@@ -5,7 +5,6 @@ import * as episodesSelector from "./features/episodes.selectors";
 import EpisodesListItem from "./episodesListItem/EpisodesListItem";
 import Pagination from "../pagination/Pagination";
 import SearchField from "../searchField/SearchField";
-import { useNavigate } from "react-router-dom";
 
 const EpisodesList = ({ getEpisodesData, episodes, next, prev }) => {
   const [searchValue, setSearchValue] = useState("");
@@ -14,7 +13,7 @@ const EpisodesList = ({ getEpisodesData, episodes, next, prev }) => {
 
   useEffect(() => {
     getEpisodesData(api);
-  }, []);
+  }, [api]);
 
   const changeHandler = (event) => {
     setSearchValue(event.target.value);
@@ -23,16 +22,11 @@ const EpisodesList = ({ getEpisodesData, episodes, next, prev }) => {
     }
   };
 
-  const searchHandler = () => {
-    getEpisodesData(api);
-  };
-
   return (
     <div className="episodes">
       <SearchField
         placeholderText="episode"
         searchValue={searchValue}
-        searchHandler={searchHandler}
         changeHandler={changeHandler}
       />
       <table className="table">

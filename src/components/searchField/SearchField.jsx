@@ -1,7 +1,7 @@
 const SearchField = ({
   placeholderText,
   searchValue,
-  searchHandler,
+
   changeHandler,
 }) => {
   return (
@@ -38,9 +38,6 @@ const SearchField = ({
         placeholder={`Find your ${placeholderText}`}
         onChange={(event) => changeHandler(event)}
       />
-      <button className="searchField__btn" onClick={searchHandler}>
-        Search
-      </button>
     </div>
   );
 };

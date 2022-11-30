@@ -11,13 +11,13 @@ import Pagination from "../pagination/Pagination";
 import { useNavigate } from "react-router-dom";
 
 const CharactersList = ({ characters, getCharactersList, next, prev }) => {
-  const [charactersApi, setCharactersApi] = useState(
-    "https://rickandmortyapi.com/api/character"
-  );
   const navigate = useNavigate();
+
+  const api = `https://rickandmortyapi.com/api/character/`;
+
   useEffect(() => {
-    getCharactersList(charactersApi);
-  }, [charactersApi]);
+    getCharactersList(api);
+  }, []);
 
   return (
     <div className="characters">
@@ -40,7 +40,7 @@ const CharactersList = ({ characters, getCharactersList, next, prev }) => {
             </div>
           ))}
         </div>
-        <Pagination setApi={setCharactersApi} next={next} prev={prev} />
+        <Pagination setApi={getCharactersList} next={next} prev={prev} />
       </div>
       <div className="characters__sort">
         <select id="test" className="characters__sort-select">
