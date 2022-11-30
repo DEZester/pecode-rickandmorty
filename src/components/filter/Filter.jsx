@@ -1,21 +1,21 @@
 const Filter = ({ data, filterName, changeHandler }) => {
   return (
-    <div className="locations__filter">
-      <h3 className="locations__filter-title">{`Filter by ${filterName}:`}</h3>
+    <div className="filter">
+      <h3 className="filter__title">{`Filter by ${filterName}:`}</h3>
       <select
         name="sortByType"
         id="select"
-        className="locations__filter-select"
+        className="filter__select"
         onChange={(e) => {
           changeHandler(e.target.value);
         }}
       >
-        <option className="locations__filter-option" value={""}>
+        <option className="filter__option" value={""}>
           None
         </option>
 
         {data.map((element, idx) => (
-          <option key={element + idx} className="locations__filter-option">
+          <option key={element + idx} className="filter__option">
             {element}
           </option>
         ))}

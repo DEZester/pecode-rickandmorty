@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import * as locationsActions from "./features/locations.actions";
 import * as locationsSelectors from "./features/locations.selectors";
-import LocationsListItem from "./LocationsListItem/LocationsListItem";
+import LocationsListItem from "./locationsListItem/LocationsListItem";
 import Pagination from "../pagination/Pagination";
 import SearchField from "../searchField/SearchField";
 import { locationsTypes, locationsDimensions } from "./features/data";
 import Filter from "../filter/Filter";
+import FilterLayout from "../filterLayout/FilterLayout";
 
 // let arr = [];
 // locations.forEach((element) => {
@@ -64,14 +65,7 @@ const Locations = ({ getLocationsData, locations, next, prev }) => {
         </table>
         <Pagination next={next} prev={prev} setApi={getLocationsData} />
       </div>
-      <div className="locations__filters">
-        <h1 className="locations__title">Filter</h1>
-        <div
-          className="locations__clearFilter"
-          onClick={() => getLocationsData(baseUrl)}
-        >
-          Clear Filters
-        </div>
+      <FilterLayout clearFilters={getLocationsData} baseUrl={baseUrl}>
         <Filter
           filterName={`Type`}
           data={locationsTypes}
@@ -82,7 +76,7 @@ const Locations = ({ getLocationsData, locations, next, prev }) => {
           data={locationsDimensions}
           changeHandler={setDimensionValue}
         />
-      </div>
+      </FilterLayout>
     </div>
   );
 };

@@ -1,9 +1,4 @@
-const SearchField = ({
-  placeholderText,
-  searchValue,
-
-  changeHandler,
-}) => {
+const SearchField = ({ placeholderText, searchValue, changeHandler }) => {
   return (
     <div className="searchField">
       <svg
@@ -38,6 +33,7 @@ const SearchField = ({
         placeholder={`Find your ${placeholderText}`}
         onChange={(event) => changeHandler(event)}
       />
+      <button className="searchField__btn">Search</button>
     </div>
   );
 };
