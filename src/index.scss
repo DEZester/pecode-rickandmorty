@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Creepster&display=swap");
 @import "./components/header/header.scss";
 @import "./components/charactersList/charactersList.scss";
 @import "./components/charactersList/сharactersListItem/characterListItem.scss";
@@ -10,6 +11,7 @@
 @import "./stylesheets/mixins.scss";
 @import "./components/filter/filter.scss";
 @import "./components/filterLayout/filterLayout.scss";
+@import "./components/myEpisodes/myEpisodes.scss";
 
 body {
   margin: 0;

@@ -2,8 +2,10 @@
   margin-top: 20px;
   border: 1px solid white;
   text-align: center;
+  min-width: 100%;
   max-width: 255px;
   &__select {
+    min-width: 100%;
     max-width: 255px;
     padding: 10px 20px;
     color: white;

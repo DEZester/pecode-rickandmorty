@@ -24,9 +24,9 @@ const Header = () => {
             </NavLink>
           </li>
           <li className="navlist__item">
-            <a href="#" className="navlist__link">
+            <NavLink to={"/myEpisodes"} className={activeLink}>
               My Episodes
-            </a>
+            </NavLink>
           </li>
         </ul>
       </nav>

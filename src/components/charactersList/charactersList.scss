@@ -2,20 +2,16 @@
   display: flex;
   width: 100%;
   color: aliceblue;
+  margin-top: 81px;
   &__list {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-left: 30px;
   }
   &__list-items {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 2rem;
-    margin: 81px 0;
-  }
-  &__sort {
-    margin-left: 30px;
   }
 }

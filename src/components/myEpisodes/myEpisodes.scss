@@ -1,0 +1,79 @@
+.myEpisodes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 80px;
+  min-width: 100%;
+  &__form {
+    display: flex;
+    align-items: center;
+  }
+  &__input {
+    padding-left: 10px;
+    height: 48px;
+    width: 500px;
+    font-size: 22px;
+    border: none;
+    outline: none;
+    background: #f8f8f8;
+  }
+  &__todo-list {
+    margin-top: 40px;
+    padding: 0;
+    list-style-type: none;
+  }
+  &__todo-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 8px;
+    min-width: 100%;
+    max-width: 512px;
+    height: 40px;
+    border: 2px solid white;
+    background-color: transparent;
+    font-size: 20px;
+    font-family: "Creepster", cursive;
+    letter-spacing: 2px;
+    &_active {
+      background: #00b5cc;
+      color: #202329;
+      text-decoration: line-through;
+      text-decoration-color: chartreuse;
+    }
+  }
+
+  &__todo-checkbox {
+    margin-right: 12px;
+    width: 15px;
+    height: 15px;
+  }
+
+  &__todo-delete-btn {
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    margin-left: auto;
+    text-decoration: none;
+    transform: rotate(45deg);
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    opacity: 0.7;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    transition: all 0.5s;
+    &::before {
+      content: "+";
+    }
+    &:hover {
+      background: grey;
+    }
+  }
+}
