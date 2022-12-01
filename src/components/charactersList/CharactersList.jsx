@@ -1,22 +1,18 @@
-import { useEffect, useState } from "react";
-import { connect } from "react-redux";
-import * as charactersSelector from "./features/characters.selectors";
-import CharactersListItem from "./сharactersListItem/CharactersListItem";
-import * as charactersActions from "./features/characters.actions";
-import Pagination from "../pagination/Pagination";
-import { useNavigate } from "react-router-dom";
-import FilterLayout from "../filterLayout/FilterLayout";
-import {
-  charactersStatuses,
-  charactersSpecieses,
-  charactersGenders,
-} from "./features/data";
-import Filter from "../filter/Filter";
+import { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import * as charactersSelector from './features/characters.selectors';
+import * as charactersActions from './features/characters.actions';
+import CharactersListItem from '../UI/сharactersListItem/CharactersListItem';
+import Pagination from '../UI/pagination/Pagination';
+import FilterLayout from '../UI/filterLayout/FilterLayout';
+import Filter from '../UI/filter/Filter';
+import { charactersStatuses, charactersSpecieses, charactersGenders } from './features/data';
 
 const CharactersList = ({ characters, getCharactersList, next, prev }) => {
-  const [statusValue, setStatusValue] = useState("");
-  const [speciesValue, setSpeciesValue] = useState("");
-  const [genderValue, setGenderValue] = useState("");
+  const [statusValue, setStatusValue] = useState('');
+  const [speciesValue, setSpeciesValue] = useState('');
+  const [genderValue, setGenderValue] = useState('');
 
   const baseUrl = `https://rickandmortyapi.com/api/character/`;
   let api = `${baseUrl}?status=${statusValue}&species=${speciesValue}&gender=${genderValue}`;
@@ -30,25 +26,13 @@ const CharactersList = ({ characters, getCharactersList, next, prev }) => {
   return (
     <div className="characters">
       <FilterLayout clearFilters={getCharactersList} baseUrl={baseUrl}>
-        <Filter
-          data={charactersStatuses}
-          filterName={"Status"}
-          changeHandler={setStatusValue}
-        />
-        <Filter
-          data={charactersSpecieses}
-          filterName={"Species"}
-          changeHandler={setSpeciesValue}
-        />
-        <Filter
-          data={charactersGenders}
-          filterName={"Gender"}
-          changeHandler={setGenderValue}
-        />
+        <Filter data={charactersStatuses} filterName={'Status'} changeHandler={setStatusValue} />
+        <Filter data={charactersSpecieses} filterName={'Species'} changeHandler={setSpeciesValue} />
+        <Filter data={charactersGenders} filterName={'Gender'} changeHandler={setGenderValue} />
       </FilterLayout>
       <div className="characters__list">
         <div className="characters__list-items">
-          {characters.map((character) => (
+          {characters.map(character => (
             <div
               className={`characters__list-item_${character.id}`}
               key={character.id}
@@ -71,7 +55,7 @@ const CharactersList = ({ characters, getCharactersList, next, prev }) => {
   );
 };
 
-const mapState = (state) => {
+const mapState = state => {
   return {
     characters: charactersSelector.charactersSelector(state),
     next: charactersSelector.nextPageSelector(state),

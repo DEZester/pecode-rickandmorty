@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
-import MyEpisodesItem from "./MyEpisodesItem";
+import { useState, useEffect } from 'react';
+import MyEpisodesItem from '../UI/MyEpisodesItem';
 
 const MyEpisodes = () => {
   const [todos, setTodos] = useState(() => {
-    const savedTodos = localStorage.getItem("todos");
+    const savedTodos = localStorage.getItem('todos');
     if (savedTodos) {
       return JSON.parse(savedTodos);
     } else {
@@ -11,19 +11,19 @@ const MyEpisodes = () => {
     }
   });
 
-  const [todo, setTodo] = useState("");
+  const [todo, setTodo] = useState('');
 
   useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos));
+    localStorage.setItem('todos', JSON.stringify(todos));
   }, [todos]);
 
-  const handleInputChange = (e) => {
+  const handleInputChange = e => {
     setTodo(e.target.value);
   };
 
-  const toggleComplete = (id) => {
+  const toggleComplete = id => {
     setTodos(
-      todos.map((todo) => {
+      todos.map(todo => {
         if (todo.id === id) {
           return {
             ...todo,
@@ -31,18 +31,18 @@ const MyEpisodes = () => {
           };
         }
         return todo;
-      })
+      }),
     );
   };
 
-  const handleDeleteClick = (id) => {
-    const removeItem = todos.filter((todo) => todo.id !== id);
+  const handleDeleteClick = id => {
+    const removeItem = todos.filter(todo => todo.id !== id);
     setTodos(removeItem);
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = e => {
     e.preventDefault();
-    if (todo !== "") {
+    if (todo !== '') {
       setTodos([
         ...todos,
         {
@@ -52,7 +52,7 @@ const MyEpisodes = () => {
         },
       ]);
     }
-    setTodo("");
+    setTodo('');
   };
 
   const compareTasks = (first, second) => {
@@ -75,7 +75,7 @@ const MyEpisodes = () => {
       </form>
 
       <ul className="myEpisodes__todo-list">
-        {todos.sort(compareTasks).map((todo) => (
+        {todos.sort(compareTasks).map(todo => (
           <MyEpisodesItem
             key={todo.id}
             id={todo.id}

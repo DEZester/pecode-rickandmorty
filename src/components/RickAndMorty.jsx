@@ -1,11 +1,11 @@
-import Header from "./header/Header";
-import CharactersList from "./charactersList/CharactersList";
-import CharacterCard from "./characterCard/CharacterCard";
-import { Route, Routes } from "react-router-dom";
-import NotFound from "./notFound/NotFound";
-import EpisodesList from "./episodes/EpisodesList";
-import LocationsList from "./locations/LocationsList";
-import MyEpisodes from "./myEpisodes/MyEpisodes";
+import Header from './UI/header/Header';
+import CharactersList from './charactersList/CharactersList';
+import CharacterCard from './characterCard/CharacterCard';
+import { Route, Routes } from 'react-router-dom';
+import NotFound from './notFound/NotFound';
+import EpisodesList from './episodes/EpisodesList';
+import LocationsList from './locations/LocationsList';
+import MyEpisodes from './myEpisodes/MyEpisodes';
 
 const RickAndMorty = () => {
   return (

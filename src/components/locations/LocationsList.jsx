@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
-import { connect } from "react-redux";
-import * as locationsActions from "./features/locations.actions";
-import * as locationsSelectors from "./features/locations.selectors";
-import LocationsListItem from "./locationsListItem/LocationsListItem";
-import Pagination from "../pagination/Pagination";
-import SearchField from "../searchField/SearchField";
-import { locationsTypes, locationsDimensions } from "./features/data";
-import Filter from "../filter/Filter";
-import FilterLayout from "../filterLayout/FilterLayout";
+import { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import * as locationsActions from './features/locations.actions';
+import * as locationsSelectors from './features/locations.selectors';
+import LocationsListItem from '../UI/locationsListItem/LocationsListItem';
+import Pagination from '../UI/pagination/Pagination';
+import SearchField from '../UI/searchField/SearchField';
+import { locationsTypes, locationsDimensions } from './features/data';
+import Filter from '../UI/filter/Filter';
+import FilterLayout from '../UI/filterLayout/FilterLayout';
 
 // let arr = [];
 // locations.forEach((element) => {
@@ -15,10 +15,10 @@ import FilterLayout from "../filterLayout/FilterLayout";
 // });
 
 const Locations = ({ getLocationsData, locations, next, prev }) => {
-  const [searchValue, setSearchValue] = useState("");
-  const [typeValue, setTypeValue] = useState("");
-  const [dimensionValue, setDimensionValue] = useState("");
-  const baseUrl = "https://rickandmortyapi.com/api/location";
+  const [searchValue, setSearchValue] = useState('');
+  const [typeValue, setTypeValue] = useState('');
+  const [dimensionValue, setDimensionValue] = useState('');
+  const baseUrl = 'https://rickandmortyapi.com/api/location';
   const api = `${baseUrl}?type=${typeValue}&dimension=${dimensionValue}`;
 
   useEffect(() => {
@@ -28,11 +28,7 @@ const Locations = ({ getLocationsData, locations, next, prev }) => {
   return (
     <div className="locations">
       <FilterLayout clearFilters={getLocationsData} baseUrl={baseUrl}>
-        <Filter
-          filterName={`Type`}
-          data={locationsTypes}
-          changeHandler={setTypeValue}
-        />
+        <Filter filterName={`Type`} data={locationsTypes} changeHandler={setTypeValue} />
         <Filter
           filterName={`Dimension`}
           data={locationsDimensions}
@@ -58,7 +54,7 @@ const Locations = ({ getLocationsData, locations, next, prev }) => {
             </tr>
           </thead>
           <tbody>
-            {locations.map((location) => (
+            {locations.map(location => (
               <LocationsListItem
                 key={location.id}
                 number={location.id}
@@ -76,7 +72,7 @@ const Locations = ({ getLocationsData, locations, next, prev }) => {
   );
 };
 
-const mapState = (state) => {
+const mapState = state => {
   return {
     locations: locationsSelectors.locationsListSelector(state),
     next: locationsSelectors.nextPageLocationsSelector(state),

@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
-import { connect } from "react-redux";
-import * as episodesActions from "./features/episodes.actions";
-import * as episodesSelector from "./features/episodes.selectors";
-import EpisodesListItem from "./episodesListItem/EpisodesListItem";
-import Pagination from "../pagination/Pagination";
-import SearchField from "../searchField/SearchField";
+import { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import * as episodesActions from './features/episodes.actions';
+import * as episodesSelector from './features/episodes.selectors';
+import EpisodesListItem from './episodesListItem/EpisodesListItem';
+import Pagination from '../UI/pagination/Pagination';
+import SearchField from '../UI/searchField/SearchField';
 
 const EpisodesList = ({ getEpisodesData, episodes, next, prev }) => {
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState('');
 
   let api = `https://rickandmortyapi.com/api/episode/`;
 
@@ -35,7 +35,7 @@ const EpisodesList = ({ getEpisodesData, episodes, next, prev }) => {
           </tr>
         </thead>
         <tbody>
-          {episodes.map((episode) => (
+          {episodes.map(episode => (
             <EpisodesListItem
               key={episode.id}
               name={episode.name}
@@ -51,7 +51,7 @@ const EpisodesList = ({ getEpisodesData, episodes, next, prev }) => {
   );
 };
 
-const mapState = (state) => {
+const mapState = state => {
   return {
     episodes: episodesSelector.episodesListSelector(state),
     next: episodesSelector.nextPageEpisodesSelector(state),

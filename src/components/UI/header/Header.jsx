@@ -1,5 +1,5 @@
-import headerLogo from "../../images/header-logo.png";
-import { NavLink } from "react-router-dom";
+import headerLogo from '../../../images/header-logo.png';
+import { NavLink } from 'react-router-dom';
 const Header = () => {
   const activeLink = ({ isActive }) =>
     isActive ? `navlist__link navlist__link-active` : `navlist__link`;
@@ -14,17 +14,17 @@ const Header = () => {
             </NavLink>
           </li>
           <li className="navlist__item">
-            <NavLink to={"/episodes"} className={activeLink}>
+            <NavLink to={'/episodes'} className={activeLink}>
               Episodes
             </NavLink>
           </li>
           <li className="navlist__item">
-            <NavLink to={"/locations"} className={activeLink}>
+            <NavLink to={'/locations'} className={activeLink}>
               Locations
             </NavLink>
           </li>
           <li className="navlist__item">
-            <NavLink to={"/myEpisodes"} className={activeLink}>
+            <NavLink to={'/myEpisodes'} className={activeLink}>
               My Episodes
             </NavLink>
           </li>
