@@ -27,6 +27,18 @@ const Locations = ({ getLocationsData, locations, next, prev }) => {
 
   return (
     <div className="locations">
+      <FilterLayout clearFilters={getLocationsData} baseUrl={baseUrl}>
+        <Filter
+          filterName={`Type`}
+          data={locationsTypes}
+          changeHandler={setTypeValue}
+        />
+        <Filter
+          filterName={`Dimension`}
+          data={locationsDimensions}
+          changeHandler={setDimensionValue}
+        />
+      </FilterLayout>
       <div className="locations__list">
         <SearchField
           placeholderText="location"
@@ -60,18 +72,6 @@ const Locations = ({ getLocationsData, locations, next, prev }) => {
         </table>
         <Pagination next={next} prev={prev} setApi={getLocationsData} />
       </div>
-      <FilterLayout clearFilters={getLocationsData} baseUrl={baseUrl}>
-        <Filter
-          filterName={`Type`}
-          data={locationsTypes}
-          changeHandler={setTypeValue}
-        />
-        <Filter
-          filterName={`Dimension`}
-          data={locationsDimensions}
-          changeHandler={setDimensionValue}
-        />
-      </FilterLayout>
     </div>
   );
 };

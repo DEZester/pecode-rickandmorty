@@ -29,6 +29,23 @@ const CharactersList = ({ characters, getCharactersList, next, prev }) => {
 
   return (
     <div className="characters">
+      <FilterLayout clearFilters={getCharactersList} baseUrl={baseUrl}>
+        <Filter
+          data={charactersStatuses}
+          filterName={"Status"}
+          changeHandler={setStatusValue}
+        />
+        <Filter
+          data={charactersSpecieses}
+          filterName={"Species"}
+          changeHandler={setSpeciesValue}
+        />
+        <Filter
+          data={charactersGenders}
+          filterName={"Gender"}
+          changeHandler={setGenderValue}
+        />
+      </FilterLayout>
       <div className="characters__list">
         <div className="characters__list-items">
           {characters.map((character) => (
@@ -50,23 +67,6 @@ const CharactersList = ({ characters, getCharactersList, next, prev }) => {
         </div>
         <Pagination setApi={getCharactersList} next={next} prev={prev} />
       </div>
-      <FilterLayout clearFilters={getCharactersList} baseUrl={baseUrl}>
-        <Filter
-          data={charactersStatuses}
-          filterName={"Status"}
-          changeHandler={setStatusValue}
-        />
-        <Filter
-          data={charactersSpecieses}
-          filterName={"Species"}
-          changeHandler={setSpeciesValue}
-        />
-        <Filter
-          data={charactersGenders}
-          filterName={"Gender"}
-          changeHandler={setGenderValue}
-        />
-      </FilterLayout>
     </div>
   );
 };
